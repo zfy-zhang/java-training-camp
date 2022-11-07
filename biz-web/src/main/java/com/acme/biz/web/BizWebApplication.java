@@ -2,6 +2,7 @@ package com.acme.biz.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
  * @Description:
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since
  */
 @SpringBootApplication
+@ServletComponentScan
 public class BizWebApplication {
 
     public static void main(String[] args) {

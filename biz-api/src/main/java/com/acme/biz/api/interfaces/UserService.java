@@ -12,7 +12,9 @@ import java.util.Map;
  * @Author <a href="mailto:zfy_zang@163.com">Vincent</a>
  * @Modify
  * @since
- * @deprecated
+ * @see UserRegistrationService
+ * @see UserLoginService
+ * @deprecated 该接口不推荐使用，请使用 {@link UserLoginService} 或 {@link UserRegistrationService}
  */
 @FeignClient("${user.service.name}")
 @RequestMapping("/user")
