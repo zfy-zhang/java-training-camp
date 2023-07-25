@@ -12,7 +12,7 @@ import java.util.List;
  * Redis 命令执行拦截器选择器
  *
  * @author <a href="mailto:zfy_zang@163.com">elisha</a>
- * @since TODO
+ * @since 1.0.0
  **/
 public class RedisCommandInterceptorSelector implements ImportSelector, BeanClassLoaderAware {
 

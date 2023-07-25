@@ -13,10 +13,10 @@ import java.util.Map;
  */
 public abstract class HttpApi<T> {
 
-    @Valid
+    @Deprecated
     private Map<String, String> headers;
 
-    @Valid
+    @Deprecated
     private MultiValueMap<String, String> metadata;
 
     @Valid
