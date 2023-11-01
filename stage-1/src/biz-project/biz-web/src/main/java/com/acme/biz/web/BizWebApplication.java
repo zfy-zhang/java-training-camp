@@ -1,6 +1,6 @@
 package com.acme.biz.web;
 
-//import com.acme.biz.api.redis.EnableRedisIntercepting;
+import com.acme.biz.api.redis.EnableRedisIntercepting;
 import com.acme.biz.web.servlet.mvc.interceptor.ResourceBulkheadHandlerInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +24,7 @@ import java.util.List;
 @Import(value = {
         ResourceBulkheadHandlerInterceptor.class,
 })
-//@EnableRedisIntercepting
+@EnableRedisIntercepting
 public class BizWebApplication implements WebMvcConfigurer {
 
     @Autowired
