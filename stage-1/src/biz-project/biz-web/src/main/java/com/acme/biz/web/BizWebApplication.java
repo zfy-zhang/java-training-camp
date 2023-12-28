@@ -5,6 +5,7 @@ import com.acme.biz.web.servlet.mvc.interceptor.ResourceBulkheadHandlerIntercept
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -25,6 +26,7 @@ import java.util.List;
         ResourceBulkheadHandlerInterceptor.class,
 })
 @EnableRedisIntercepting
+@EnableConfigurationProperties
 public class BizWebApplication implements WebMvcConfigurer {
 
     @Autowired

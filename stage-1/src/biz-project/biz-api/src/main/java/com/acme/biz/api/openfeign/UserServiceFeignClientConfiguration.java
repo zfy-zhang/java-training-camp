@@ -27,11 +27,9 @@ public class UserServiceFeignClientConfiguration {
     @Autowired
     private ObjectFactory<HttpMessageConverters> messageConverters;
 
-
     @Bean
     public Decoder feignDecoder() {
         return new ApiResponseDecoder(new ResponseEntityDecoder(new SpringDecoder(messageConverters)));
     }
-
 
 }
