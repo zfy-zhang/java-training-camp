@@ -42,7 +42,7 @@ public class ApiResponseHandlerMethodReturnValueHandler implements HandlerMethod
         // returnValue =  POJO
         ApiResponse apiResponse = ApiResponse.ok(returnValue);
         HttpServletResponse response = (HttpServletResponse) webRequest.getNativeResponse();
-//        response.addHeader("v", "3");
+        response.addHeader("v", "3");
 
         ServletServerHttpResponse httpOutMessage = createOutputMessage(webRequest);
         converter.write(apiResponse, MediaType.APPLICATION_JSON, httpOutMessage);

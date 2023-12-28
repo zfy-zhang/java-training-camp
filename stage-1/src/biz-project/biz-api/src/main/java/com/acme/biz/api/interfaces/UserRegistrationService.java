@@ -1,6 +1,7 @@
 package com.acme.biz.api.interfaces;
 
 import com.acme.biz.api.model.User;
+import com.acme.biz.api.openfeign.UserServiceFeignClientConfiguration;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.annotation.Validated;
@@ -16,11 +17,13 @@ import javax.validation.Valid;
  * @Modify
  * @since
  */
-@FeignClient("${user-register.service.name}")
-@RequestMapping("/user")
+//@FeignClient("${user-register.service.name}")
+@FeignClient(name = "user-service", configuration = UserServiceFeignClientConfiguration.class)
+//@RequestMapping("/user")
 @DubboService
 public interface UserRegistrationService {
 
-    @PostMapping("/register")
+    @PostMapping(value = "/user/register", produces = "application/json;v=3.0")
     Boolean registerUser(@RequestBody @Validated @Valid User user);
+
 }
