@@ -77,19 +77,19 @@ public class PropertySourceMessageSource implements MessageSource, InitializingB
     }
 
     private PropertySource buildPropertySource(Locale locale, Resource resource) throws IOException {
-        String propertyourceName = buildPropertySourceName(locale);
-        PropertySource existePpropertySource = propertySources.get(propertyourceName);
+        String propertySourceName = buildPropertySourceName(locale);
+        PropertySource existedPropertySource = propertySources.get(propertySourceName);
 
-        // 如果之前不存在，创建全新的 PpropertySource
-        if (existePpropertySource == null) {
-            return newPropertySource(propertyourceName, locale, resource);
+        // 如果之前不存在，创建全新的 PropertySource
+        if (existedPropertySource == null) {
+            return newPropertySource(propertySourceName, locale, resource);
         } else {
-            CompositePropertySource propertySource = new CompositePropertySource(propertyourceName);
-            propertySource.addFirstPropertySource(existePpropertySource);
+            CompositePropertySource propertySource = new CompositePropertySource(propertySourceName);
+            propertySource.addFirstPropertySource(existedPropertySource);
             // 添加已存在的 PropertyResource
-            PropertySource newPpropertySource = newPropertySource(propertyourceName + "@" + resource.getURI(), locale, resource);
+            PropertySource newPropertySource = newPropertySource(propertySourceName + "@" + resource.getURI(), locale, resource);
             // 添加新的 PropertyResource
-            propertySource.addPropertySource(newPpropertySource);
+            propertySource.addPropertySource(newPropertySource);
             return propertySource;
         }
     }
@@ -97,7 +97,7 @@ public class PropertySourceMessageSource implements MessageSource, InitializingB
     private PropertySource newPropertySource(String propertySourceName, Locale locale, Resource resource) {
         YamlPropertiesFactoryBean yamlPropertiesFactoryBean = new YamlPropertiesFactoryBean();
 
-        // 关联 YAML Resourc
+        // 关联 YAML Resource
         yamlPropertiesFactoryBean.setResources(resource);
         // 初始化
         yamlPropertiesFactoryBean.afterPropertiesSet();
