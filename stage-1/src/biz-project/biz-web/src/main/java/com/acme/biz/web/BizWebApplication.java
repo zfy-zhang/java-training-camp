@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -25,7 +26,8 @@ import java.util.List;
 @Import(value = {
         ResourceBulkheadHandlerInterceptor.class,
 })
-@EnableRedisIntercepting
+@EnableDiscoveryClient // 激活服务发现客户端
+//@EnableRedisIntercepting
 @EnableConfigurationProperties
 public class BizWebApplication implements WebMvcConfigurer {
 

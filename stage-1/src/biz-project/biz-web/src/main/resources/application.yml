@@ -4,3 +4,10 @@ server:
 spring:
   application:
     name: user-service
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:12345/eureka
+#      instanceInfoReplicationIntervalSeconds: 10
