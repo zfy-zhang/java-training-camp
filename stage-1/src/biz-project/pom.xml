@@ -39,6 +39,7 @@
         <module>biz-dependencies</module>
         <module>biz-client</module>
         <module>eureka-server</module>
+        <module>biz-client-ribbon</module>
     </modules>
 
     <dependencyManagement>

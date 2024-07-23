@@ -22,15 +22,14 @@ import java.util.Map;
 public class CpuUsageLoadBalancer implements ReactorServiceInstanceLoadBalancer {
 
 
-    private final ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSuppliers;
+    private final ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider;
 
-    public CpuUsageLoadBalancer(ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSuppliers) {
-        this.serviceInstanceListSuppliers = serviceInstanceListSuppliers;
+    public CpuUsageLoadBalancer(ObjectProvider<ServiceInstanceListSupplier> serviceInstanceListSupplierProvider) {
+        this.serviceInstanceListSupplierProvider = serviceInstanceListSupplierProvider;
     }
 
-    @Override
     public Mono<Response<ServiceInstance>> choose(Request request) {
-        ServiceInstanceListSupplier serviceInstanceListSupplier = serviceInstanceListSuppliers.getIfAvailable();
+        ServiceInstanceListSupplier serviceInstanceListSupplier = serviceInstanceListSupplierProvider.getIfAvailable();
         Flux<List<ServiceInstance>> flux = serviceInstanceListSupplier.get();
         List<ServiceInstance> serviceInstances = flux.blockFirst();
         for (ServiceInstance serviceInstance : serviceInstances) {
@@ -43,12 +42,12 @@ public class CpuUsageLoadBalancer implements ReactorServiceInstanceLoadBalancer 
     }
 
 
-//    /**
-//     * 兼容老版本
-//     *
-//     * @param request
-//     * @return
-//     */
+    /**
+     * 兼容老版本
+     *
+     * @param request
+     * @return
+     */
 //    public Mono<org.springframework.cloud.client.loadbalancer.reactive.Response<ServiceInstance>> choose(
 //            org.springframework.cloud.client.loadbalancer.reactive.Request request) {
 //        ServiceInstanceListSupplier serviceInstanceListSupplier = serviceInstanceListSupplierProvider.getIfAvailable();
