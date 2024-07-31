@@ -1,6 +1,7 @@
 package com.acme.biz.web;
 
 import com.acme.biz.api.redis.EnableRedisIntercepting;
+import com.acme.biz.web.i18.LocalValidatorFactoryBeanPostProcessor;
 import com.acme.biz.web.servlet.mvc.interceptor.ResourceBulkheadHandlerInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -26,6 +27,7 @@ import java.util.List;
 @ServletComponentScan
 @Import(value = {
         ResourceBulkheadHandlerInterceptor.class,
+        LocalValidatorFactoryBeanPostProcessor.class,
 })
 @EnableDiscoveryClient // 激活服务发现客户端
 @EnableScheduling
