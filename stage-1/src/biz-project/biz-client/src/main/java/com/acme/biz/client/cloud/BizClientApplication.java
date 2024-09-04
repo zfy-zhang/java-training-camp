@@ -1,6 +1,8 @@
 package com.acme.biz.client.cloud;
 
 import com.acme.biz.api.interfaces.UserRegistrationService;
+import com.acme.biz.api.micrometer.MicrometerConfiguration;
+import com.acme.biz.api.micrometer.feign.FeignCallCounterMetrics;
 import com.acme.biz.api.model.User;
 import com.acme.biz.client.cloud.loadblancer.CpuUsageBalancerConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableFeignClients(clients = UserRegistrationService.class)
 @LoadBalancerClient(name = "user-service", configuration = CpuUsageBalancerConfiguration.class)
 //@EnableScheduling
-//@Import({MicrometerConfiguration.class, FeignCallCounterMetrics.class})
+@Import({MicrometerConfiguration.class, FeignCallCounterMetrics.class})
 public class BizClientApplication {
 
     public static void main(String[] args) {
