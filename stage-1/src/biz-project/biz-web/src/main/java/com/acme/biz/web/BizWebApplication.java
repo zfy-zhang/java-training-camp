@@ -1,5 +1,6 @@
 package com.acme.biz.web;
 
+import com.acme.biz.api.micrometer.binder.servo.ServoMetrics;
 import com.acme.biz.api.redis.EnableRedisIntercepting;
 import com.acme.biz.web.i18.LocalValidatorFactoryBeanPostProcessor;
 import com.acme.biz.web.servlet.mvc.interceptor.ResourceBulkheadHandlerInterceptor;
@@ -28,6 +29,7 @@ import java.util.List;
 @Import(value = {
         ResourceBulkheadHandlerInterceptor.class,
         LocalValidatorFactoryBeanPostProcessor.class,
+        ServoMetrics.class
 })
 @EnableDiscoveryClient // 激活服务发现客户端
 @EnableScheduling
