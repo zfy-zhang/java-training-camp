@@ -1,6 +1,6 @@
 package com.acme.biz.api.fegin.config;
 
-import com.acme.biz.api.micrometer.feign.FeignCallCounterMetrics;
+import com.acme.biz.api.micrometer.binder.feign.FeignCallCounterMetrics;
 import org.springframework.cloud.openfeign.FeignClientProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;

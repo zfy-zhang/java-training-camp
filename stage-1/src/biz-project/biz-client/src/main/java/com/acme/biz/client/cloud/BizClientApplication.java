@@ -2,7 +2,7 @@ package com.acme.biz.client.cloud;
 
 import com.acme.biz.api.interfaces.UserRegistrationService;
 import com.acme.biz.api.micrometer.MicrometerConfiguration;
-import com.acme.biz.api.micrometer.feign.FeignCallCounterMetrics;
+import com.acme.biz.api.micrometer.binder.feign.FeignCallCounterMetrics;
 import com.acme.biz.api.model.User;
 import com.acme.biz.client.cloud.loadblancer.CpuUsageBalancerConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 
 /**
  * biz-client 应用启动类
